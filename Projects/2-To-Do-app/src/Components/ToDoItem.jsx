@@ -1,4 +1,4 @@
-function ToDoItem({itemName,itemDate}) {
+function ToDoItem({ itemName, itemDate, onDeleteClick }) {
   // let itemName = " Make a birthday wish"
   // let itemDate = "2/2/27"
   return <div className="container">
@@ -8,7 +8,12 @@ function ToDoItem({itemName,itemDate}) {
       </div>
       <div className="col-4">{itemDate}</div>
       <div className="col-2">
-        <button type="button" className="btn btn-danger kg-button">Delete</button>
+        <button type="button"
+          className="btn btn-danger kg-button"
+          onClick={() => onDeleteClick(itemName)}
+        >
+          Delete
+        </button>
       </div>
     </div>
   </div>

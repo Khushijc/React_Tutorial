@@ -16,3 +16,9 @@ input{
 .kg-button{
   min-width: 80px;
 }
+.para{
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: 600;
+
+}

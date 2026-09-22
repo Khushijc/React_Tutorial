@@ -1,10 +1,14 @@
 import ToDoItem from "./ToDoItem";
 
-function ToDoItems({ todoItems }) {
+function ToDoItems({ todoItems,onDeleteClick }) {
   return (
     <>
       {todoItems.map((item) => (
-        <ToDoItem itemName={item.name} itemDate={item.DueDate} />
+        <ToDoItem 
+        key={item.name}
+        itemName={item.name} 
+        itemDate={item.DueDate} 
+        onDeleteClick={onDeleteClick}/>
       ))}
     </>
   );
