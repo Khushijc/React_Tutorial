@@ -1,17 +1,22 @@
-import ToDoItem from "./ToDoItem";
+import { useContext } from "react"
+import { ToDoItemContext } from "../store/todo-item-store"
+import ToDoItem from "./ToDoItem"
 
-function ToDoItems({ todoItems,onDeleteClick }) {
+const ToDoItems = () => {
+  const { todoItems, deleteNewItem } = useContext(ToDoItemContext)
+  
   return (
     <>
       {todoItems.map((item) => (
-        <ToDoItem 
-        key={item.name}
-        itemName={item.name} 
-        itemDate={item.DueDate} 
-        onDeleteClick={onDeleteClick}/>
+        <ToDoItem
+          key={item.name}
+          itemName={item.name}
+          itemDate={item.dueDate}
+          onDeleteClick={deleteNewItem}
+        />
       ))}
     </>
-  );
+  )
 }
 
-export default ToDoItems;
+export default ToDoItems

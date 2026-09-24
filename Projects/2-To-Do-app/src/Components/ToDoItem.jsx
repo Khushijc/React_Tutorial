@@ -1,3 +1,5 @@
+import { MdDeleteForever } from "react-icons/md";
+
 function ToDoItem({ itemName, itemDate, onDeleteClick }) {
   // let itemName = " Make a birthday wish"
   // let itemDate = "2/2/27"
@@ -13,6 +15,7 @@ function ToDoItem({ itemName, itemDate, onDeleteClick }) {
           onClick={() => onDeleteClick(itemName)}
         >
           Delete
+          <MdDeleteForever />
         </button>
       </div>
     </div>

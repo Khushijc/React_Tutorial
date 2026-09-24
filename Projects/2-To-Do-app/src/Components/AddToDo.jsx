@@ -1,38 +1,38 @@
+import { useRef, useContext } from "react";
 import { useState } from "react"
+import { IoMdAdd } from "react-icons/io";
+import { ToDoItemContext } from "../store/todo-item-store"
 
-function AddToDo({onNewItem}) {
 
-  const [todoName,setTodoName]=useState()
-  const [dueDate,setDueDate]=useState()
-  const handleNamechange=(event)=>{
-    setTodoName(event.target.value);
-    
-  }
-  const handleDatechange=(event)=>{
-    setDueDate(event.target.value)
-  }
+function AddToDo() {
+  const { addNewItem } = useContext(ToDoItemContext)
+  // const [todoName,setTodoName]=useState("")
+  // const [dueDate,setDueDate]=useState("")
+  const todoName=useRef()
+  const dueDate=useRef()
 
-  const handleAddBotton=()=>{
-    onNewItem(todoName,dueDate)
-    setDueDate("")
-    setTodoName("")
-
+  const handleAddBotton=(event)=>{
+    console.log(event);
+    event.preventDefault()
+    const todoNameEle=todoName.current.value
+    const dueDateEle=dueDate.current.value
+    addNewItem(todoNameEle,dueDateEle)
+    todoName.current.value=""
+    dueDate.current.value=""
   }
   return <div className="container">
-    <div className="row kg-row">
+    <form className="row kg-row" onSubmit={handleAddBotton}>
       <div className="col-6">
         <input type="text" 
-        placeholder="Enter you To-do here" 
-        value={todoName}
-        onChange={handleNamechange}/>
+        ref={todoName}
+        placeholder="Enter you To-do here" />
       </div>
       <div className="col-4"><input type="date" 
-      value={dueDate}
-      onChange={handleDatechange}/></div>
+      ref={dueDate}/></div>
       <div className="col-2">
-        <button type="button" className="btn btn-success kg-button" onClick={handleAddBotton}>Add</button>
+        <button className="btn btn-success kg-button">Add <IoMdAdd /></button>
       </div>
-    </div>
+    </form>
   </div>
 }
 export default AddToDo
